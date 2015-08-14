@@ -1,10 +1,12 @@
 <?php 
 
-require 'vendor/react/promise/src/functions.php';
-require 'vendor/react/promise/src/PromisorInterface.php';
-require 'vendor/react/promise/src/PromiseInterface.php';
-require 'vendor/react/promise/src/CancellablePromiseInterface.php';
-require 'vendor/react/promise/src/ExtendedPromiseInterface.php';
-require 'vendor/react/promise/src/FulfilledPromise.php';
+require_once __DIR__ . '/vendor/promise/src/PromisorInterface.php';
+require_once __DIR__ . '/vendor/promise/src/PromiseInterface.php';
+require_once __DIR__ . '/vendor/promise/src/CancellablePromiseInterface.php';
+require_once __DIR__ . '/vendor/promise/src/ExtendedPromiseInterface.php';
+require_once __DIR__ . '/vendor/promise/src/RejectedPromise.php';
+require_once __DIR__ . '/vendor/promise/src/FulfilledPromise.php';
+require_once __DIR__ . '/vendor/promise/src/Promise.php';
+require_once __DIR__ . '/vendor/promise/src/functions.php';
 
 ?>

@@ -1,58 +1,63 @@
 <?php
 
-require 'vendor/guzzlehttp/streams/src/StreamInterface.php';
-require 'vendor/guzzlehttp/streams/src/Stream.php';
-require 'vendor/guzzlehttp/streams/src/StreamDecoratorTrait.php';
+require_once __DIR__ . '/vendor/streams/src/StreamInterface.php';
+require_once __DIR__ . '/vendor/streams/src/Stream.php';
+require_once __DIR__ . '/vendor/streams/src/StreamDecoratorTrait.php';
 
+require_once __DIR__ . '/vendor/guzzle/src/Exception/TransferException.php';
+require_once __DIR__ . '/vendor/guzzle/src/Exception/RequestException.php';
+require_once __DIR__ . '/vendor/guzzle/src/Exception/BadResponseException.php';
+require_once __DIR__ . '/vendor/guzzle/src/Exception/ClientException.php';
 
-require 'vendor/guzzlehttp/guzzle/src/Event/EventInterface.php';
-require 'vendor/guzzlehttp/guzzle/src/Event/AbstractEvent.php';
-require 'vendor/guzzlehttp/guzzle/src/Event/AbstractRequestEvent.php';
-require 'vendor/guzzlehttp/guzzle/src/Event/BeforeEvent.php';
-require 'vendor/guzzlehttp/guzzle/src/Event/RequestEvents.php';
-require 'vendor/guzzlehttp/guzzle/src/Event/EmitterInterface.php';
-require 'vendor/guzzlehttp/guzzle/src/Event/ListenerAttacherTrait.php';
-require 'vendor/guzzlehttp/guzzle/src/Event/Emitter.php';
-require 'vendor/guzzlehttp/guzzle/src/Event/HasEmitterTrait.php';
-require 'vendor/guzzlehttp/guzzle/src/Event/HasEmitterInterface.php';
-require 'vendor/guzzlehttp/guzzle/src/Event/SubscriberInterface.php';
-require 'vendor/guzzlehttp/guzzle/src/Event/AbstractTransferEvent.php';
-require 'vendor/guzzlehttp/guzzle/src/Event/AbstractRetryableEvent.php';
-require 'vendor/guzzlehttp/guzzle/src/Event/CompleteEvent.php';
-require 'vendor/guzzlehttp/guzzle/src/Event/EndEvent.php';
+require_once __DIR__ . '/vendor/guzzle/src/Event/EventInterface.php';
+require_once __DIR__ . '/vendor/guzzle/src/Event/AbstractEvent.php';
+require_once __DIR__ . '/vendor/guzzle/src/Event/AbstractRequestEvent.php';
+require_once __DIR__ . '/vendor/guzzle/src/Event/BeforeEvent.php';
+require_once __DIR__ . '/vendor/guzzle/src/Event/RequestEvents.php';
+require_once __DIR__ . '/vendor/guzzle/src/Event/EmitterInterface.php';
+require_once __DIR__ . '/vendor/guzzle/src/Event/ListenerAttacherTrait.php';
+require_once __DIR__ . '/vendor/guzzle/src/Event/Emitter.php';
+require_once __DIR__ . '/vendor/guzzle/src/Event/HasEmitterTrait.php';
+require_once __DIR__ . '/vendor/guzzle/src/Event/HasEmitterInterface.php';
+require_once __DIR__ . '/vendor/guzzle/src/Event/SubscriberInterface.php';
+require_once __DIR__ . '/vendor/guzzle/src/Event/AbstractTransferEvent.php';
+require_once __DIR__ . '/vendor/guzzle/src/Event/AbstractRetryableEvent.php';
+require_once __DIR__ . '/vendor/guzzle/src/Event/CompleteEvent.php';
+require_once __DIR__ . '/vendor/guzzle/src/Event/ErrorEvent.php';
+require_once __DIR__ . '/vendor/guzzle/src/Event/EndEvent.php';
 
-require 'vendor/guzzlehttp/guzzle/src/Subscriber/HttpError.php';
-require 'vendor/guzzlehttp/guzzle/src/Subscriber/Prepare.php';
-require 'vendor/guzzlehttp/guzzle/src/Subscriber/Redirect.php';
+require_once __DIR__ . '/vendor/guzzle/src/Subscriber/HttpError.php';
+require_once __DIR__ . '/vendor/guzzle/src/Subscriber/Prepare.php';
+require_once __DIR__ . '/vendor/guzzle/src/Subscriber/Redirect.php';
 
-require 'vendor/guzzlehttp/guzzle/src/Message/AppliesHeadersInterface.php';
+require_once __DIR__ . '/vendor/guzzle/src/Message/AppliesHeadersInterface.php';
 
-require 'vendor/guzzlehttp/guzzle/src/Post/PostFileInterface.php';
-require 'vendor/guzzlehttp/guzzle/src/Post/PostFile.php';
-require 'vendor/guzzlehttp/guzzle/src/Post/MultiPartBody.php';
-require 'vendor/guzzlehttp/guzzle/src/Post/PostBodyInterface.php';
-require 'vendor/guzzlehttp/guzzle/src/Post/PostBody.php';
+require_once __DIR__ . '/vendor/guzzle/src/Post/PostFileInterface.php';
+require_once __DIR__ . '/vendor/guzzle/src/Post/PostFile.php';
+require_once __DIR__ . '/vendor/guzzle/src/Post/PostBodyInterface.php';
+require_once __DIR__ . '/vendor/guzzle/src/Post/PostBody.php';
 
-require 'vendor/guzzlehttp/guzzle/src/Message/MessageInterface.php';
-require 'vendor/guzzlehttp/guzzle/src/Message/RequestInterface.php';
-require 'vendor/guzzlehttp/guzzle/src/Message/ResponseInterface.php';
-require 'vendor/guzzlehttp/guzzle/src/Message/FutureResponse.php';
-require 'vendor/guzzlehttp/guzzle/src/Message/AbstractMessage.php';
-require 'vendor/guzzlehttp/guzzle/src/Message/Request.php';
-require 'vendor/guzzlehttp/guzzle/src/Message/Response.php';
-require 'vendor/guzzlehttp/guzzle/src/Message/MessageFactoryInterface.php';
-require 'vendor/guzzlehttp/guzzle/src/Message/MessageFactory.php';
+require_once __DIR__ . '/vendor/guzzle/src/Message/MessageInterface.php';
+require_once __DIR__ . '/vendor/guzzle/src/Message/RequestInterface.php';
+require_once __DIR__ . '/vendor/guzzle/src/Message/ResponseInterface.php';
+require_once __DIR__ . '/vendor/guzzle/src/Message/FutureResponse.php';
+require_once __DIR__ . '/vendor/guzzle/src/Message/AbstractMessage.php';
+require_once __DIR__ . '/vendor/guzzle/src/Message/Request.php';
+require_once __DIR__ . '/vendor/guzzle/src/Message/Response.php';
+require_once __DIR__ . '/vendor/guzzle/src/Message/MessageFactoryInterface.php';
+require_once __DIR__ . '/vendor/guzzle/src/Message/MessageFactory.php';
 
-require 'vendor/guzzlehttp/guzzle/src/Transaction.php';
-require 'vendor/guzzlehttp/guzzle/src/HasDataTrait.php';
-require 'vendor/guzzlehttp/guzzle/src/ToArrayInterface.php';
-require 'vendor/guzzlehttp/guzzle/src/Collection.php';
-require 'vendor/guzzlehttp/guzzle/src/RequestFsm.php';
-require 'vendor/guzzlehttp/guzzle/src/ClientInterface.php';
-require 'vendor/guzzlehttp/guzzle/src/RingBridge.php';
-require 'vendor/guzzlehttp/guzzle/src/Query.php';
-require 'vendor/guzzlehttp/guzzle/src/Url.php';
-require 'vendor/guzzlehttp/guzzle/src/Utils.php';
-require 'vendor/guzzlehttp/guzzle/src/Client.php';
+require_once __DIR__ . '/vendor/guzzle/src/Transaction.php';
+require_once __DIR__ . '/vendor/guzzle/src/HasDataTrait.php';
+require_once __DIR__ . '/vendor/guzzle/src/ToArrayInterface.php';
+require_once __DIR__ . '/vendor/guzzle/src/Collection.php';
+require_once __DIR__ . '/vendor/guzzle/src/RequestFsm.php';
+require_once __DIR__ . '/vendor/guzzle/src/ClientInterface.php';
+require_once __DIR__ . '/vendor/guzzle/src/RingBridge.php';
+require_once __DIR__ . '/vendor/guzzle/src/QueryParser.php';
+require_once __DIR__ . '/vendor/guzzle/src/Query.php';
+require_once __DIR__ . '/vendor/guzzle/src/Url.php';
+require_once __DIR__ . '/vendor/guzzle/src/Utils.php';
+require_once __DIR__ . '/vendor/guzzle/src/Client.php';
 
 ?>

@@ -7,7 +7,7 @@ require 'require/viagogo.php';
 
 /*
     Here we instantiate the $api object which is initialised using your client credentials 
-    (id and secret). Once we have the api object, we can get an access token and start
+    (id and secret). Once we 	have the api object, we can get an access token and start
     sending requests to the API.
 */
 $clientId = '<CLIENT_ID_HERE>';
