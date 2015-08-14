@@ -1,2 +1,2 @@
 # viagogo-manual-load
-Example of manual loading for viagogo php library
+Example of loading manually (instead of via composer) the viagogo API library for PHP
